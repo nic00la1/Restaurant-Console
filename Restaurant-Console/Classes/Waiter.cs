@@ -16,5 +16,10 @@ namespace Restaurant_Console.Classes
         public string Name { get; set; }
         public string Surname { get; set; }
         public List<Order> AcceptedOrders { get; set; }
+
+        public static void AcceptAnOrderFromACustomer()
+        {
+            Console.WriteLine("");
+        }
     }
 }
