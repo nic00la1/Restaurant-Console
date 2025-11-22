@@ -1,4 +1,5 @@
 ﻿using Restaurant_Console.Classes;
+using Restaurant_Console.Menu;
 using System;
 
 namespace Restaurant_Console
@@ -7,12 +8,8 @@ namespace Restaurant_Console
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Restauracja");
-
-            foreach (var d in Dish.Dishes)
-            {
-                Console.WriteLine("{0,2}. {1,-30} {2,8:C}", d.Id, d.Name, d.Price);
-            }
+            Menu.Menu.StartMenu();
+            Dish.DisplayDishes();
         }
     }
 }

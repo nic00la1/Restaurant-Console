@@ -21,5 +21,13 @@ namespace Restaurant_Console.Classes
             new Dish(){ Id = 5, Name = "Łosoś z pieca", Price = 60 },
             new Dish(){ Id = 6, Name = "Spaghetti", Price = 60 }
         };
+
+        public static void DisplayDishes()
+        {
+            foreach (var d in Dishes)
+            {
+                Console.WriteLine("{0,2}. {1,-30} {2,8:C}", d.Id, d.Name, d.Price);
+            }
+        }
     }
 }
