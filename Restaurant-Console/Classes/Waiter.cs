@@ -12,5 +12,9 @@ namespace Restaurant_Console.Classes
         // 1. przyjmować zamówienia od klientów 
         // 2. przekazywać zamówienia do kuchni
         // 3. generować rachunki na podstawie zamówień
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public List<Order> AcceptedOrders { get; set; }
     }
 }
