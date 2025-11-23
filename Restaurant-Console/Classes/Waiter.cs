@@ -48,6 +48,35 @@ namespace Restaurant_Console.Classes
             AcceptedOrders.Add(order);
 
             Console.WriteLine($"[{Name}] Przyjęto zamówienie #{order.Id} od klienta {client} (pozycji: {order.Dishes?.Count ?? 0}).");
+            
+            // Automatycznie przekaż zamówienie do kuchni
+            try
+            {
+                Kitchen.ReceiveOrder(order);
+                // Oznaczamy, że zostało przekazane do kuchni
+                order.IsSend = true;
+                Console.WriteLine($"[{Name}] Zamówienie #{order.Id} przekazane do kuchni.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[{Name}] Błąd podczas przekazywania zamówienia #{order.Id} do kuchni: {ex.Message}");
+            }
+        }
+
+        // Przekazuje zamówienia do kuchni 
+        public void ForwardOrderToKitchen(Order order)
+        {
+            if (order == null) throw new ArgumentNullException(nameof(order));
+            if (!AcceptedOrders.Contains(order))
+            {
+                Console.WriteLine($"[{Name}] Zamówienie #{order.Id} nie znajduje się w liście przyjętych zamówień.");
+                return;
+            }
+
+            // Wyślij do Serwisu kuchni
+            Kitchen.ReceiveOrder(order);
+            order.IsSend = true;
+            Console.WriteLine($"[{Name}] Zamówienie #{order.Id} przekazane do kuchni.");
         }
 
         // Interaktywna metoda przyjmowania zamówienia - Menu wywoła tę metodę, żeby nie zaśmiecać Menu.cs
@@ -150,8 +179,8 @@ namespace Restaurant_Console.Classes
                 var total = (o.Dishes ?? new List<Dish>())
                     .GroupBy(d => d.Id)
                     .Sum(g => g.Count() * g.First().Price);
-                Console.WriteLine($"- #{o.Id} klient: {(o.Client != null ? o.Client.ToString() : "brak")}" +
-                    $"  items: {o.Dishes?.Count ?? 0}  total: {total:C}");
+                Console.WriteLine($"- #{o.Id} [{o.OrderDate:yyyy-MM-dd HH:mm}] klient: {(o.Client != null ? o.Client.ToString() : "brak")}" +
+                   $"  items: {o.Dishes?.Count ?? 0}  total: {total:C}");
             }
 
             Console.WriteLine("\nPress any key...");

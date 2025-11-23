@@ -8,4 +8,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Classes\b5oskose.o5k~" />
+  </ItemGroup>
+
 </Project>
