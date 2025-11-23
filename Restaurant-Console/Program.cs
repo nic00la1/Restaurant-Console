@@ -1,5 +1,4 @@
-﻿using Restaurant_Console.Classes;
-using Restaurant_Console.Menu;
+﻿using Restaurant_Console.Menu;
 using System;
 
 namespace Restaurant_Console
@@ -9,7 +8,6 @@ namespace Restaurant_Console
         static void Main(string[] args)
         {
             Menu.Menu.StartMenu();
-            Dish.DisplayDishes();
         }
     }
 }

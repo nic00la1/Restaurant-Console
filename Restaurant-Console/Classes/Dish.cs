@@ -24,10 +24,12 @@ namespace Restaurant_Console.Classes
 
         public static void DisplayDishes()
         {
+            Console.WriteLine(">>> Menu dostęnych dań: <<<\n");
             foreach (var d in Dishes)
             {
                 Console.WriteLine("{0,2}. {1,-30} {2,8:C}", d.Id, d.Name, d.Price);
             }
+            Console.ReadKey();
         }
     }
 }

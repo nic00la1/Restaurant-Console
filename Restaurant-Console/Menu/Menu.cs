@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Restaurant_Console.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace Restaurant_Console.Menu
 {
     public class Menu
     {
-        static string[] pozycjeMenu = {"Opcja 1", "Opcja 2", "Opcja 3", "Opcja 4", "Opcja 5", "Koniec"};
+        static string[] pozycjeMenu = { "Wyświetl Menu dań", "Opcja 2", "Opcja 3", "Opcja 4", "Opcja 5", "Koniec"};
         static int aktywnaPozycjaMenu = 0;
 
         public static void StartMenu()
@@ -73,7 +74,7 @@ namespace Restaurant_Console.Menu
         {
             switch (aktywnaPozycjaMenu)
             {
-                case 0: Console.Clear(); OpcjaWBudowie(); break; 
+                case 0: Console.Clear(); DisplayMenuDishes(); break; 
                 case 1: Console.Clear(); OpcjaWBudowie(); break; 
                 case 2: Console.Clear(); OpcjaWBudowie(); break; 
                 case 3: Console.Clear(); OpcjaWBudowie(); break; 
@@ -87,6 +88,11 @@ namespace Restaurant_Console.Menu
             Console.SetCursorPosition(12, 4);
             Console.Write("Opcja w budowie!");
             Console.ReadKey();
+        }
+
+        static void DisplayMenuDishes()
+        {
+            Dish.DisplayDishes();
         }
     }
 }
