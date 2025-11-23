@@ -9,8 +9,9 @@ namespace Restaurant_Console.Menu
 {
     public class Menu
     {
-        static string[] pozycjeMenu = { "Wyświetl Menu dań", "Opcja 2", "Opcja 3", "Opcja 4", "Opcja 5", "Koniec"};
+        static string[] pozycjeMenu = { "Wyświetl Menu dań", "Złóż zamówienie", "Pokaż przyjęte zamówienia", "Koniec"};
         static int aktywnaPozycjaMenu = 0;
+        static Waiter waiter = new Waiter("Jan");
 
         public static void StartMenu()
         {
@@ -75,19 +76,10 @@ namespace Restaurant_Console.Menu
             switch (aktywnaPozycjaMenu)
             {
                 case 0: Console.Clear(); DisplayMenuDishes(); break; 
-                case 1: Console.Clear(); OpcjaWBudowie(); break; 
-                case 2: Console.Clear(); OpcjaWBudowie(); break; 
-                case 3: Console.Clear(); OpcjaWBudowie(); break; 
-                case 4: Console.Clear(); OpcjaWBudowie(); break; 
-                case 5: Environment.Exit(0); break; 
+                case 1: Console.Clear(); waiter.TakeOrderInteractive(); break; 
+                case 2: Console.Clear(); waiter.PrintAcceptedOrders(); break; 
+                case 3: Environment.Exit(0); break; 
             }
-        }
-
-        static void OpcjaWBudowie()
-        {
-            Console.SetCursorPosition(12, 4);
-            Console.Write("Opcja w budowie!");
-            Console.ReadKey();
         }
 
         static void DisplayMenuDishes()

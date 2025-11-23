@@ -19,7 +19,7 @@ namespace Restaurant_Console.Classes
             new Dish(){ Id = 3, Name = "Pomidorowa", Price = 10 },
             new Dish(){ Id = 4, Name = "Kurczak z ziemniakami", Price = 20 },
             new Dish(){ Id = 5, Name = "Łosoś z pieca", Price = 60 },
-            new Dish(){ Id = 6, Name = "Spaghetti", Price = 60 }
+            new Dish(){ Id = 6, Name = "Spaghetti", Price = 45 }
         };
 
         public static void DisplayDishes()
